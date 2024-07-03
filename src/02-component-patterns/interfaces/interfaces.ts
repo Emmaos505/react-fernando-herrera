@@ -3,8 +3,6 @@ import { Props as ProductCardProps } from '../components/ProductCard';
 import { Props as ProductImageProps } from '../components/ProductImage';
 import { Props as ProductTitleProps } from '../components/ProductTitle';
 
-
-
 export interface Product {
     id: string;
     img?: string;
@@ -17,6 +15,7 @@ export interface ProductContextProps {
     increaseBy: (value: number) => void;
     onchange?: (args: OnProductChangeProps) => void;
     value?: number;
+    maxCount?: number;
 }
 
 
@@ -39,4 +38,17 @@ export interface OnProductChangeProps {
 
 export type ShoppingPageState = Record<string, ProductInCart>;
 
+export interface InitialValues {
+    count: number;
+    maxCount?: number;
+}
 
+export interface ProductCartHandlers {
+    count: number;
+    isMaxCountReached: boolean;
+    maxCount?: number;
+    product: Product;
+
+    increaseBy: (value: number) => void;
+    reset: () => void;
+}
